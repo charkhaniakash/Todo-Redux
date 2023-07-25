@@ -1,12 +1,24 @@
-import { createStore , combineReducers } from "redux";
-import { todos }  from "./todos/reducers"
 
-// first
+
+import { createStore, combineReducers } from "redux";
+import { todos } from "./todos/reducers";
+
 const reducers = {
-    todos
-}
+    todos,
+};
 
-const rootReducer = combineReducers(reducers)
+const persistedState = localStorage.getItem("reduxState")
+    ? JSON.parse(localStorage.getItem("reduxState"))
+    : {};
 
+const rootReducer = combineReducers(reducers);
 
-export const configureStore =() => createStore(rootReducer)
+const configureStore = () => createStore(rootReducer, persistedState);
+
+const store = configureStore();
+
+store.subscribe(() => {
+    localStorage.setItem("reduxState", JSON.stringify(store.getState()));
+});
+
+export default store;

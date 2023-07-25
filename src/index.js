@@ -3,14 +3,14 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import { Provider } from "react-redux";
-import { configureStore } from "./store";
+import store from "./store";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Provider store={configureStore()} >
+    <Provider store={store} >
       <App />
     </Provider>
   </StrictMode>
