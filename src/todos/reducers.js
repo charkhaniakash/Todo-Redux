@@ -10,7 +10,7 @@ export const todos = (state = [], action) => {
             const { text } = payload;
             const newTodo = {
                 text,
-                isComplated: false,
+                isCompleted: false,
             }
             return state.concat(newTodo);
         }
@@ -23,7 +23,7 @@ export const todos = (state = [], action) => {
             const { text } = payload;
             return state.map(todo => {
                     if(todo.text === text){
-                        return { ...todo , isComplated:true}
+                        return { ...todo , isCompleted: true}
                     }
                     return todo
                 }

@@ -1,0 +1,86 @@
+Uni-directiuonal data flow
+
+Redux store can use Json which is 
+
+
+
+{
+  users: {
+       isLoged:..,
+       logOf : ...,
+  }
+}
+             
+
+
+Redux actions :- are j-son objects, consisting of two things, an action type, which is basically just a string naming the action, and a payload of additional data. The purpose of redux actions, is to explicitly define the different events that can occur in our application. So for example, we could have an action with the type: user data loaded, with a payload that contains the actual user data that we just fetched from the server
+
+Redux reducers:- on the other hand are Redux's way of specifying what should happen to our Redux store, our central state, when a given action occurs. So using our example from before, we might say that when a user data loaded action occurs, we set the user property in the Redux store to the user data that's in the action's payload.
+
+Example :-  reducers work  ?. Every time any action is fired from anywhere in our application our reducer will get called. When this happens, the two arguments that will get passed to a reducer are the current state of whatever resource the reducer is managing. In this case it'll be an array of the current todo items in our application and the second argument is the action that was triggered which will be an object with type and payload properties. So what reducers do is take the current state and the action that was triggered and decide what changes should occur in the state as the result of this action. 
+
+
+
+
+
+Redux Toolkit also includes a powerful data fetching and caching capability that we've dubbed "RTK Query".
+
+RTK Query is provided as an optional addon within the @reduxjs/toolkit package. It is purpose-built to solve the use case of data fetching and caching, supplying a compact, but powerful toolset to define an API interface layer for your app.
+
+
+import { createApi } from '@reduxjs/toolkit/query/react'
+
+
+
+
+1)  createSlice :-  ......
+
+
+
+useSelector()​:--
+Allows you to extract data from the Redux store state, using a selector function.
+
+
+
+useDispatch()​:-  It returns a reference to the dispatch function, which allows you to trigger state updates. It's typically used when you need to modify the state in the store
+
+
+
+
+configureStore:-
+
+It is a function provided by the Redux library that makes it easier to create a Redux store with commonly used middleware and other configurations. 
+
+import { configureStore } from '@reduxjs/toolkit';
+
+
+slice:-
+
+Saga slice is an abstraction on top of redux and sagas meant to help reduce boilerplate around Redux. It uses immer to implement immutability. In a normal redux project with sagas, you typically have 4 files that you would need to keep track of: types.js, reducers.js, actions.js, and sagas.js. With saga slice, you only have to manage 1 file: sagaSlice.js
+
+
+----------------------
+
+In Redux, action.payload is a property commonly used in action objects to represent the data or payload associated with a specific action. It is a convention used in Redux for passing additional data from the action creator to the reducer, providing information that is needed to update the state in the Redux store.
+
+const addUser = (user) => {
+  return {
+    type: 'ADD_USER',
+    payload: user, // user object is the payload
+  };
+};
+
+// Usage
+const user = { id: 1, name: 'John' };
+const action = addUser(user);
+
+
+In this example, the addUser action creator creates an action with a type of 'ADD_USER' and a payload property containing the user object. When this action is dispatched and handled by a reducer, the payload can be accessed in the reducer function to extract the data needed for updating the state in the Redux store.
+
+
+------------------------------
+
+Redux Thunk
+
+Side Effects Use Cases
+In practice, the single most common use case for side effects in a typical Redux app is fetching and caching data from the server.

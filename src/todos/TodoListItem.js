@@ -1,6 +1,6 @@
 import React from "react";
 import "./TodoListItem.css"; 
-const TodoListItem = ({ todo, onRemovePressed , onMarkDown }) => {
+const TodoListItem = ({ todo, onRemovePressed , onMarkDown , onDisplayThunk }) => {
   return (
     <div className="todo-item">
       <div>{todo?.text}</div>
@@ -8,7 +8,7 @@ const TodoListItem = ({ todo, onRemovePressed , onMarkDown }) => {
       {todo.isCompleted
                 ? null
                 : <button
-                    onClick={() => onMarkDown(todo.text)}
+                    onClick={() => onDisplayThunk(todo.text)}
                     className="completed-button">Mark As Completed</button>}
         <button className="remove-button" onClick={() => onRemovePressed(todo.text)}>Remove</button>
       </div>
