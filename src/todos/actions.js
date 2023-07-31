@@ -17,3 +17,19 @@ export const markAsRead = (text) =>({
     type:MARK_TO_COMPLETED,
     payload: {text},
 })
+
+export const LOAD_TODO_PROGRESS = "LOAD_TODO_PROGRESS";
+export const loadingProgress = () =>({
+    type:LOAD_TODO_PROGRESS,
+})
+
+export const LOAD_TODO_SUCCESS = "LOAD_TODO_SUCCESS";
+export const loadingSuccess = todos =>({
+    type:LOAD_TODO_SUCCESS,
+    payload : {todos},
+});
+
+export const LOAD_TODO_FAILURE = "LOAD_TODO_FAILURE";
+export const loadingFailure = () => ({
+    type : LOAD_TODO_FAILURE,
+})

@@ -1,12 +1,14 @@
 
 
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { todos } from "./todos/reducers";
+import { todos , isLoading } from "./todos/reducers";
+
 import thunk from 'redux-thunk'
 
 
 const reducers = {
     todos,
+    isLoading,
 };
 
 
